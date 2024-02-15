@@ -1,0 +1,36 @@
+.info {
+    background-color: grey;
+ 
+    
+    
+}
+#firstDiv {
+   
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px;
+}
+
+.secondDiv {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+
+}
+#inputCountry{
+    height: 20px;
+    width: 400px;
+}
+#countriesBtn{
+    background-color: aquamarine;
+}
+#englishBtn{
+    background-color: aquamarine;
+}
+#thirdBtn{
+    background-color: aquamarine;
+
+}
+
