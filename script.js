@@ -1,5 +1,5 @@
 const searchBtn = document.getElementById("searchBtn");
-const inputCountry = document.getElementById("inputCountry");
+
 
 
 
