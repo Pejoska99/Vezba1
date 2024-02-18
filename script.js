@@ -1,9 +1,12 @@
 const searchBtn = document.getElementById("searchBtn");
 
 
+
 async function fetchCountryByName(country) {
     
     try{
+     
+  
     const response = await fetch(`https://restcountries.com/v3.1/name/${country}`);
    const data = await response.json();
    return data ;
@@ -17,20 +20,26 @@ throw error;
 
 searchBtn.addEventListener ('click', async function(){
   
+  
+  
   const inputCountry = document.getElementById('inputCountry').value;
-    
+   
 try{
     const data = await fetchCountryByName(inputCountry);
     console.log(data);
+    
     
     const tableContainer = document.getElementById("tableContainer");
     tableContainer.innerHTML = '';
     data.forEach((country) => {            
     createCountryTable(country);
-       
+   
 });
+
+
 }catch(error){
     console.error(error);
+    
         
 }
    
@@ -74,7 +83,6 @@ async function fetchAllCountries() {
     
   try{
   const response = await fetch(`https://restcountries.com/v3.1/all`);
- 
  const data = await response.json();
  console.log(data)
  return data ;
@@ -168,3 +176,41 @@ function displayCountries(countries) {
         createCountryTable(country);
     });
 }
+
+async function filteredCountries(filter, descending) {
+  try{
+  const allCountries = await fetchAllCountries();
+  let sortedCountries;
+
+  switch (filter) {
+    case "name":
+      sortedCountries = allCountries.sort((a, b)=> {
+
+      if(descending)
+    if(a.name.common < b.name.common){
+      return 1
+    }
+    else{
+      return -1;
+    }
+    else{
+      if(a.name.common > b.name.common){
+      return 1
+    }
+    else{
+      return -1;
+    }
+  }
+});   
+      break;
+      
+  }
+  return sortedCountries.map(country =>country.name.common)
+}catch(error){
+  console.error(error);
+}
+}
+filteredCountries('name',true).then(sortedCountries=>{
+  console.log("Sorted Countries:",sortedCountries)
+})
+  
