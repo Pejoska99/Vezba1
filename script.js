@@ -182,8 +182,8 @@ async function filteredCountries(filter, descending) {
   const allCountries = await fetchAllCountries();
   let sortedCountries;
 
-  switch (filter) {
-    case "name":
+  if (filter === "name"){
+    
       sortedCountries = allCountries.sort((a, b)=> {
 
       if(descending)
@@ -202,15 +202,34 @@ async function filteredCountries(filter, descending) {
     }
   }
 });   
-      break;
+}else if (filter === "area"){
+  sortedCountries = allCountries.sort((a,b)=> (descending ? b.area-a.area : a.area - b.area));
+}
+else if (filter === "population"){
+  sortedCountries = allCountries.sort((a,b)=> (descending ? b.population - a.population :a.population -b.population));
+}
+else{
+  console.error("invalid");
+}
       
-  }
-  return sortedCountries.map(country =>country.name.common)
+  
+  return sortedCountries.map(country => ({
+    name:country.name.common,
+    area: country.area,
+    population:country.population
+  }));
 }catch(error){
   console.error(error);
 }
 }
-filteredCountries('name',true).then(sortedCountries=>{
-  console.log("Sorted Countries:",sortedCountries)
-})
+filteredCountries('name',false).then(sortedCountries=>{
+  console.log("Sorted Countries by name:",sortedCountries)
+});
+filteredCountries('area',false).then(sortedCountries=>{
+  console.log("Sorted Countries by area:",sortedCountries)
+});
+filteredCountries('population',false).then(sortedCountries=>{
+  console.log("Sorted Countries by population:",sortedCountries)
+});
+
   
