@@ -1,37 +1,51 @@
 .info {
-    background-color: grey;
- 
-    
+    background-color: rgb(201, 192, 192); 
     
 }
+
+#firstDiv h1 {
+   color: #416bc4;
+
+}   
+    
+
 #firstDiv {
-   
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 50px;
+    margin:10px auto;
+    padding: 50px; 
+    
 }
 
 .secondDiv {
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     padding: 10px;
+    text-align: center;
 
 }
-#inputCountry{
-    height: 20px;
+ #inputCountry{
+    
+    height: 30px;
     width: 400px;
-}
-#countriesBtn{
-    background-color: aquamarine;
-}
-#englishBtn{
-    background-color: aquamarine;
-}
-#thirdBtn{
-    background-color: aquamarine;
+    margin-right: 10px;
+} 
 
+
+#countriesBtn,#englishBtn,#thirdBtn{
+    background-color:  #416bc4;
+    color:white;
+    
+}
+
+.container mt-5{
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px; 
+}
+#searchBtn {
+background-color:#416bc4 ;
+color: white;
+    
 }
 
 
